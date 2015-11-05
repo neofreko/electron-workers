@@ -39,7 +39,7 @@
     "eslint": "1.7.3",
     "eslint-config-airbnb": "0.1.0",
     "mocha": "2.3.3",
-    "npm-run-all": "1.2.12",
+    "npm-run-all": "1.2.13",
     "rimraf": "2.4.3",
     "should": "7.1.1"
   }
