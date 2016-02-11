@@ -215,7 +215,11 @@ class ElectronWorker extends EventEmitter {
 
       debugWorker(`spawning process for worker [${this.id}] with args:`, childArgs, 'and options:', childOpts);
 
-      this._childProcess = childProcess.spawn(pathToElectron, childArgs, childOpts);
+      if (this.options.useXvfbRun) {
+        this._childProcess = childProcess.spawn('xvfb-run', [pathToElectron].concat(childArgs), childOpts);
+      } else {
+        this._childProcess = childProcess.spawn(pathToElectron, childArgs, childOpts);
+      }
 
       // ipc connection is required for ipc mode
       if (connectionMode === 'ipc' && !this._childProcess.send) {
